@@ -1,7 +1,3 @@
-Here’s a sample README for your **Drug-Activity-Prediction** project on GitHub:
-
----
-
 # Drug Activity Prediction 🚀
 
 ### Overview
