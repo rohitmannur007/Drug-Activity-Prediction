@@ -9,7 +9,7 @@
 - With the help of this project we can detect the human Actions/Activities based on the **Human Pose**.
   
 ## 📝 Description
-- This implemantation is based on official **Alphapose** repository https://github.com/MVIG-SJTU/AlphaPose 
+- This implemantation is based on official **Alphapose** repository https:https://github.com/rohitmannur007/Alphapose
 - In this project we have used **Alphapose** and **XGBOOST** for activity recognition.
 
 ## ⏳ Dataset
