@@ -1,96 +1,116 @@
-## :running: :walking: :dancer: Pose-With-Action
-![pose_with_action](https://user-images.githubusercontent.com/62059604/99776776-5db0de00-2b37-11eb-97e7-b39f53f2d703.gif)
+Here’s a sample README for your **Drug-Activity-Prediction** project on GitHub:
 
-![Untitled design (4)](https://user-images.githubusercontent.com/62059604/99800421-5818bf80-2b5a-11eb-83ad-c0fe6a2d48be.png)
+---
 
-![Untitled design (5)](https://user-images.githubusercontent.com/62059604/99800592-9e6e1e80-2b5a-11eb-8f70-4796dd0ee36a.png)
+# Drug Activity Prediction 🚀
 
-- This repository represents **" Action Recognition Using Alphapose "**.
-- With the help of this project we can detect the human Actions/Activities based on the **Human Pose**.
-  
-## 📝 Description
-- This implemantation is based on official **Alphapose** repository https:https://github.com/rohitmannur007/Alphapose
-- In this project we have used **Alphapose** and **XGBOOST** for activity recognition.
+### Overview
+This repository contains a project aimed at predicting the biological activity of drug molecules using machine learning techniques. The objective is to classify drug molecules based on their potential efficacy against specific biological targets.
 
-## ⏳ Dataset
-- Download the dataset for custom training
-- https://drive.google.com/drive/folders/1CFxvuigTzbnRXUojFeCRozxjUbYiQ8RM?usp=sharing 
+### Problem Statement
+Drug discovery is a long and costly process, and predicting the activity of molecules early can significantly reduce the time and cost involved. The goal of this project is to use data-driven approaches to predict the activity of drug molecules based on their chemical structure and properties.
 
-## 🏽‍ Download Object Detection Model
-- Download the object detection model manually : **yolov3-spp.weights** file from following Drive Link
-- https://drive.google.com/file/d/1h2g_wQ270_pckpRCHJb9K78uDf-2PsPd/view?usp=sharing
-- Download the weight file and Place it into **" detector/yolo/data/ "** folder.
+### Key Features
+- **Feature Engineering**: Use molecular descriptors and fingerprints to represent chemical properties of drug molecules.
+- **Machine Learning Models**: Train and evaluate various models such as Random Forest, Gradient Boosting, and Neural Networks.
+- **Evaluation Metrics**: Use classification accuracy, precision, recall, F1 score, and ROC-AUC to assess model performance.
+- **Hyperparameter Tuning**: Optimize models for better accuracy and generalization.
+- **Model Interpretability**: Explain model predictions using SHAP values and feature importance.
 
-##  🏽‍ For Pose Tracking, Download the object tracking model
-- For pose tracking, download the object tracking model manually: **" JDE-1088x608-uncertainty "** from following Drive Link 
-- https://drive.google.com/file/d/1oeK1aj9t7pTi1u70nSIwx0qNVWvEvRrf/view?usp=sharing
-- Download the file and Place it into **" detector/tracker/data/ ".** folder.
+---
 
-## 🏽‍ Download Fast.res50.pt file
-- Download the **" fast.res50.pth "** file from following Drive Link 
-- https://drive.google.com/file/d/1WrvycZnVWwltSa6cjeTznEFOyNAwHEZu/view?usp=sharing
-- Download the file and Place it into **" pretrained_models/ ".** folder.
+### Workflow
 
-## :desktop_computer:	Installation
+1. **Data Collection**: The dataset consists of drug molecules with known activity labels (active/inactive).
+2. **Data Preprocessing**: Clean and preprocess the data, handling missing values, encoding categorical data, and scaling numerical features.
+3. **Feature Engineering**:
+   - Generate molecular descriptors using RDKit.
+   - Create molecular fingerprints for similarity-based predictions.
+4. **Model Training**:
+   - Build models such as Logistic Regression, Random Forest, XGBoost, and Neural Networks.
+   - Use cross-validation for robust evaluation.
+5. **Model Evaluation**:
+   - Evaluate models using accuracy, precision, recall, F1 score, and ROC-AUC.
+   - Perform hyperparameter tuning to improve model performance.
+6. **Interpretation**:
+   - Use SHAP values to understand the contribution of different molecular features to the predictions.
 
-### :hammer_and_wrench: Requirements
-* Python 3.5+
-* Cython
-* PyTorch 1.1+
-* torchvision 0.3.0+
-* Linux
-* GCC<6.0, check https://github.com/facebookresearch/maskrcnn-benchmark/issues/25
+---
 
-## :gear: Setup
-1. Install PyTorch :-
-```bash
-$ pip3 install torch==1.1.0 torchvision==0.3.0
+### Tech Stack & Tools
 
-```
-2. Install :-
-```bash
-$ export PATH=/usr/local/cuda/bin/:$PATH
+- **Languages**: Python
+- **Libraries**: 
+  - Machine Learning: Scikit-learn, XGBoost
+  - Data Manipulation: Pandas, NumPy
+  - Chemical Informatics: RDKit
+  - Visualization: Matplotlib, Seaborn
+  - Model Interpretation: SHAP
+- **Version Control**: Git, GitHub
+- **Jupyter Notebooks**: For interactive code development and visualization.
 
-```
-```bash
-$ export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
+---
 
-```
-```bash
-$ pip install cython
+### Installation & Setup
 
-```
-```bash
-$ sudo apt-get install libyaml-dev
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/rohmannur/Drug-Activity-Prediction.git
+   cd Drug-Activity-Prediction
+   ```
 
-```
-```bash
-$ python setup.py build develop --user
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```
-```bash
-$ python -m pip install Pillow==6.2.1
+3. Download the dataset and place it in the `data/` directory.
 
-```
-```bash
-$ pip install -U PyYAML
+4. Run the notebook:
+   ```bash
+   jupyter notebook
+   ```
 
-```
-## 🎯 Inference demo
-1. Testing with **Images** ( Put test images in **AlphaPose/examples/demo/** )  :-
-```bash
-$ python scripts/demo_inference.py --cfg configs/coco/resnet/256x192_res50_lr1e-3_1x.yaml --checkpoint pretrained_models/fast_res50_256x192.pth --indir examples/demo/ --save_img
+---
+
+### Project Structure
 
 ```
-2. Testing with **Video** ( Put test video in **AlphaPose/examples/demo/** )  :-
-```bash
-$ python scripts/demo_inference.py --cfg configs/coco/resnet/256x192_res50_lr1e-3_1x.yaml --checkpoint pretrained_models/fast_res50_256x192.pth --video examples/demo/3.mp4 --outdir examples/res1 --save_video --gpus 0
-
+Drug-Activity-Prediction/
+│
+├── data/                       # Dataset files
+├── notebooks/                  # Jupyter notebooks for experimentation
+├── src/                        # Source code for feature engineering, model training, etc.
+├── models/                     # Saved models for inference
+├── results/                    # Evaluation results and analysis
+├── requirements.txt            # Python dependencies
+└── README.md                   # Project documentation
 ```
 
+---
 
-### :book: Please Go through [Pose_With_Action_HLD2.docx](https://github.com/iNeuron-ai/Pose-with-Action/blob/main/doc/Pose_With_Action_HLD2.docx) for more info.
+### Results
+The best-performing model achieved an accuracy of **X%** on the validation set, with an AUC score of **Y%**. The model also provided useful insights into the molecular features that drive biological activity.
 
+---
 
+### Future Improvements
+- Incorporate deep learning models for molecular representation such as Graph Neural Networks (GNNs).
+- Use a larger dataset with more diverse molecules.
+- Explore advanced feature extraction techniques to capture more chemical properties.
 
+---
 
+### References
+- RDKit Documentation: https://www.rdkit.org/docs/
+- Scikit-learn: https://scikit-learn.org/
+- SHAP: https://shap.readthedocs.io/
+
+---
+
+### Contact
+Feel free to reach out to me via [Email](mailto:rohit.mannur@domain.com) or connect on [LinkedIn](https://linkedin.com/in/your-profile) for any questions or collaboration.
+
+---
+
+This template gives an organized and detailed overview of the project. You can modify it based on your specific results, methods, and models.
